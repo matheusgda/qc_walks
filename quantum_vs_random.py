@@ -18,16 +18,17 @@ def disc_line_random_walk(pos, size, steps):
 # 	walker = np.kron(state, plus)
 
 
+samples = 1000
 
-r_dist = np.array([disc_line_random_walk(51, 101, 40) for i in range(1000)])
+r_dist = np.array([disc_line_random_walk(51, 101, 40) for i in range(samples)])
 
 fig,axis = plt.subplots()
 sbn.distplot(r_dist, ax=axis, kde=True, hist=True)
-plt.title("Distribuição empírica para passeio aleatório.")
+plt.title(
+    "Distribuição empírica para passeio aleatório com {} amostras."
+    .format(samples))
 plt.xlabel("Nó de parada")
 plt.ylabel("Frequência relativa")
 plt.grid(True) # coller
-plt.savefig("rd_walk.png")
+# plt.savefig("rd_walk.png")
 plt.clf()
-
-sbn.hist(r_dist)
